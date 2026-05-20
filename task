@@ -1,0 +1,51 @@
+# create virtual environment
+# activate venv
+# install django
+# project create
+# runserver
+# create requirements.txt file
+# .gitignore
+# git initialize
+# .env file create
+
+
+# Restaurant Management System
+# Database
+## User Table
+- username     Char
+- password     Char
+- contact      Char
+
+# Food Table
+- name            Char
+- description     Char
+- price           Int
+- category        Char
+
+# order: 
+- user
+- price, 
+- status, 
+
+# table: 
+- tableno
+- capacity
+- status(avaliable or not)
+- location
+
+# payment: 
+-  amount, 
+-  paymethod, 
+-  status(payed or not)
+
+# inventory: 
+- item
+- quantity
+- unit
+
+#  reservation: 
+-  reservedby, 
+-  time, 
+-  totalusers
+
+# github
