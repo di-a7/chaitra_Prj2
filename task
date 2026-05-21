@@ -25,7 +25,8 @@
 # order: 
 - user
 - price, 
-- status, 
+- status,
+- food 
 
 # table: 
 - tableno
@@ -34,18 +35,13 @@
 - location
 
 # payment: 
--  amount, 
+-  order 
 -  paymethod, 
--  status(payed or not)
-
-# inventory: 
-- item
-- quantity
-- unit
 
 #  reservation: 
--  reservedby, 
+- user 
 -  time, 
 -  totalusers
+- table
 
 # github
