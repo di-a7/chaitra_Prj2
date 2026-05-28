@@ -4,27 +4,46 @@ from rest_framework.decorators import api_view
 from .models import Category, OrderItem
 from .serializer import CategorySerializer
 # Create your views here.
+# Mixins: 
+from rest_framework import mixins, generics
+
+from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
+class CategoryGerenicAPIView(ListCreateAPIView):
+   queryset = Category.objects.all()
+   serializer_class = CategorySerializer
+
+class CategoryDetail(RetrieveUpdateDestroyAPIView):
+   queryset = Category.objects.all()
+   serializer_class = CategorySerializer
+   
+   def delete(self,request,pk):
+      items = OrderItem.objects.filter(food__category= self.get_object()).count()
+      if items > 0:
+         return Response({"detail":"Category can not be deleted. Protected in OrderItem"})
+      self.get_object().delete()
+      return Response({"detail": "Category deleted successfully"})
+
 
 # Class Based: APIView
-from rest_framework.views import APIView
+# from rest_framework.views import APIView
 
-class CategoryAPIView(APIView):
-   def get(self, request):
-      category = Category.objects.all()
-      serializer = CategorySerializer(category, many=True)
-      return Response(serializer.data)
+# class CategoryAPIView(APIView):
+#    def get(self, request):
+#       category = Category.objects.all()
+#       serializer = CategorySerializer(category, many=True)
+#       return Response(serializer.data)
    
-   def post(self,request):
-      serializer = CategorySerializer(data = request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-      return Response(serializer.data)
+#    def post(self,request):
+#       serializer = CategorySerializer(data = request.data)
+#       serializer.is_valid(raise_exception=True)
+#       serializer.save()
+#       return Response(serializer.data)
 
-class CategoryDetail(APIView):
-   def get(self, request, id):
-      category = Category.objects.get(id = id)
-      serializer = CategorySerializer(category)
-      return Response(serializer.data)
+# class CategoryDetail(APIView):
+#    def get(self, request, id):
+#       category = Category.objects.get(id = id)
+#       serializer = CategorySerializer(category)
+#       return Response(serializer.data)
 
 # post, delete methods
 

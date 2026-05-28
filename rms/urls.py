@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import CategoryAPIView, CategoryDetail
+from .views import CategoryGerenicAPIView, CategoryDetail
 
 urlpatterns = [
    # Class Based:
-   path('category/', CategoryAPIView.as_view()),
-   path('category/<id>/', CategoryDetail.as_view())
+   path('category/', CategoryGerenicAPIView.as_view()),
+   path('category/<pk>/', CategoryDetail.as_view())
    
    # Function based:
    # path('category/', category),
