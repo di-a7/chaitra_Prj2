@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category
+from .models import *
 
 class CategoryModelSerializer(serializers.ModelSerializer):
    class Meta:
@@ -7,6 +7,57 @@ class CategoryModelSerializer(serializers.ModelSerializer):
       fields = ['id', 'name']
       # fields = '__all__'
       # exclude = ['name']
+   
+   def save(self, **kwargs):
+      validated_data = self.validated_data
+      category = Category.objects.filter(name = validated_data.get('name')).count()
+      if category > 0:
+         raise serializers.ValidationError({"name":"Category with this name already exists."})
+      return super().save(**kwargs)
+   
+   # def create(self, validated_data):
+   #    category = Category.objects.filter(name = validated_data.get('name')).count()
+   #    if category > 0:
+   #       raise serializers.ValidationError({"name":"Category with this name already exists."})
+   #    return super().create(validated_data)
+
+
+class FoodSerializer(serializers.ModelSerializer):
+   category_id = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+   category = serializers.StringRelatedField()
+   price_with_vat = serializers.SerializerMethodField()
+   class Meta:
+      model = Food
+      fields = ['id','name','description','price','price_with_vat','category_id','category']
+   
+   def get_price_with_vat(self, food:Food):
+      return food.price * 0.13 + food.price
+
+   
+   # price with discount method 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # class CategorySerializer(serializers.Serializer):

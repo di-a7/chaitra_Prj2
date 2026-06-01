@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Category, OrderItem
-from .serializer import CategoryModelSerializer
+from .models import *
+from .serializer import *
 # Create your views here.
 # Viewset:
 from rest_framework import viewsets
@@ -17,6 +17,11 @@ class CategoryModelViewset(viewsets.ModelViewSet):
          return Response({"detail":"Category can not be deleted. Protected in OrderItem"})
       category.delete()
       return Response({"detail": "Category deleted successfully"})
+
+
+class FoodModelViewset(viewsets.ModelViewSet):
+   queryset = Food.objects.all()
+   serializer_class = FoodSerializer
 
 # class CategoryViewSet(viewsets.ViewSet):
 #    def list(self, request):

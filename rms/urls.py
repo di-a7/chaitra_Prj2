@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('category', CategoryModelViewset, basename='category')
-# router.register('category', CategoryDetailViewSet, basename='category-detail')
+router.register('food', FoodModelViewset, basename='food')
 
 urlpatterns = [
    # Class Based:
