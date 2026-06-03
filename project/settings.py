@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rms',
     
     "rest_framework",
+    'rest_framework.authtoken',
     "debug_toolbar",
     'django_filters',
 ]
@@ -136,5 +137,6 @@ INTERNAL_IPS = [
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']
 }
