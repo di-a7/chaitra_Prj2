@@ -15,7 +15,6 @@ class LoginViewset(APIView):
          return Response({"token":token.key,"username":username})
       else:
          return Response({"detail":"User does not exists."})
-   
 
 
 # - user post username, password

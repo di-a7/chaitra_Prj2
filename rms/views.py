@@ -7,12 +7,16 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .filter import FoodFilter
+# from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from .permissions import IsAuth
+
 # Create your views here.
 # Viewset:
 from rest_framework import viewsets
 class CategoryModelViewset(viewsets.ModelViewSet):
    queryset = Category.objects.all()
    serializer_class = CategoryModelSerializer
+   permission_classes = [IsAuth]
    
    def destroy(self,request, pk):
       category = Category.objects.get(pk = pk)
