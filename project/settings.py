@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+AUTH_USER_MODEL = "user.User"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rms',
+    'user',
     
     "rest_framework",
     'rest_framework.authtoken',
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'chaitra',
+        'NAME': 'chaitra_rms',
         'USER': 'postgres',
         'PASSWORD': '123',
         'HOST': 'localhost',
