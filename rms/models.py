@@ -35,8 +35,8 @@ class Order(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE)
    total_price = models.IntegerField()
    status = models.CharField(max_length=1, choices=STATUS_CHOICE, default='P')
-   payment_status = models.CharField(max_length=1, choices=payment_status, default='P')
+   payment_status = models.CharField(max_length=1, choices=payment_status, default='U')
 
 class OrderItem(models.Model):
-   order = models.ForeignKey(Order, on_delete=models.PROTECT)
-   food = models.ForeignKey(Food, on_delete=models.PROTECT)
+   order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name='item')
+   food = models.ForeignKey(Food, on_delete=models.PROTECT, related_name = 'item')

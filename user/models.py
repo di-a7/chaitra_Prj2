@@ -5,11 +5,3 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
    phone = models.CharField(max_length = 15, unique = True)
    USERNAME_FIELD = "phone"
-
-# User model
-# admin
-
-
-# # default user
-# admin
-# User model
