@@ -141,3 +141,15 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5,
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']
 }
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+
+
+ANYMAIL = {
+    "MAILTRAP_API_TOKEN": os.getenv('MAILTRAP_API_TOKEN'),
+    "MAILTRAP_SANDBOX_ID": os.getenv('MAILTRAP_SANDBOX_ID'),
+}
+EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
