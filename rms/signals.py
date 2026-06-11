@@ -17,17 +17,17 @@ def order_post_save(sender, instance, created, **kwargs):
    #    from_email="signal@example.com",
    #    recipient_list=["user@example.com"],
    # )
-   inbox_id = 4426905
+   inbox_id = 4702495
 
    client = mt.MailtrapClient(
-      token="Bearer 4addcae338101a029b5f866d6ea663f2",
+      token="4addcae338101a029b5f866d6ea663f2",
       sandbox=True,
       inbox_id=inbox_id
    )
 
    mail = mt.Mail(
-      sender=mt.Address(email="admin@email.com", name="Test Sender"),
-      to=[mt.Address(email="user@email.com", name="Test User")],
+      sender=mt.Address(email="test@example.com", name="Test Sender"),
+      to=[mt.Address(email="user@example.com", name="Test User")],
       subject="Order Email",
       text="New Order Has been created.",
       html="<p>This is a <b>test email</b> for sandbox.</p>"

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rms',
     'user',
+    'payment',
     
     "rest_framework",
     'rest_framework.authtoken',
@@ -153,3 +154,8 @@ ANYMAIL = {
     "MAILTRAP_SANDBOX_ID": os.getenv('MAILTRAP_SANDBOX_ID'),
 }
 EMAIL_BACKEND = "anymail.backends.mailtrap.EmailBackend"
+
+
+KHALTI_SECRET_KEY = os.getenv('KHALTI_SECRET_KEY')
+KHALTI_INITIATE_URL = os.getenv('KHALTI_INITIATE_URL')
+KHALTI_LOOKUP_URL = os.getenv('KHALTI_LOOKUP_URL')
